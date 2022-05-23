@@ -15,6 +15,8 @@ const refs = {
   divBoxes: document.querySelector('#boxes'),
 };
 
+let step = 30;
+
 function createBoxes(amount) {
 
   for (let i = 0; i < amount; i += 1) {
@@ -22,8 +24,10 @@ function createBoxes(amount) {
     const randomColor = getRandomHexColor();
     divEl.style.backgroundColor = randomColor;
 
-    divEl.style.width = (30 + i * 10) + "px";
-    divEl.style.height = (30 + i * 10) + "px";
+    divEl.style.width = step + "px";
+    divEl.style.height = step + "px";
+
+    step += 10;
   
     refs.divBoxes.append(divEl);
   }
@@ -44,4 +48,5 @@ function onCreateCollection(event) {
 
 function onDeleteCollection(event) {
   destroyBoxes();
+  step = 30;
 }
